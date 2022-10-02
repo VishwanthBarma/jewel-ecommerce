@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hero-txt{
+    background: rgb(15,15,14);
+background: -moz-linear-gradient(0deg, rgba(15,15,14,1) 0%, rgba(28,246,255,1) 100%);
+background: -webkit-linear-gradient(0deg, rgba(15,15,14,1) 0%, rgba(28,246,255,1) 100%);
+background: linear-gradient(0deg, rgba(15,15,14,1) 0%, rgba(28,246,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0f0f0e",endColorstr="#1cf6ff",GradientType=1);
+background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+}
+
+.card-content {
+    position: absolute;
+    /* other styles (left, top, right, and padding) */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+}
