@@ -21,6 +21,10 @@ export const authOptions = {
       },
     }),
   ],
+
+  session: {
+    maxAge: 30 * 24 * 60 * 60,
+  },
 };
 
 export default NextAuth(authOptions);

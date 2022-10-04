@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -51,6 +52,11 @@ function Addproduct() {
 
   return (
     <div className="mt-5 p-5">
+      <Link href="/products">
+        <a>
+          <button className="text-sky-500 font-bold">Back</button>
+        </a>
+      </Link>
       <h1 className="font-bold text-2xl">Add new product</h1>
       <Toaster />
       {session ? (
