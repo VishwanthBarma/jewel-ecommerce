@@ -1,9 +1,9 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import ReactModal from "react-modal";
 import EditModal from "../Modal/EditModal";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 function ProductCard({
   uid,
@@ -53,17 +53,17 @@ function ProductCard({
           <>
             <button
               onClick={(e) => handleRemove(e)}
-              className="text-white bg-rose-500 p-1 shadow-lg rounded-md hover:bg-rose-400 absolute top-1 left-1"
+              className="text-white bg-rose-500 p-1 shadow-lg rounded-md hover:bg-rose-400 absolute top-2 left-2"
             >
-              Remove
+              <AiFillDelete className="h-5 w-5 shadow-sm" />
             </button>
             <button
               onClick={() =>
                 router.push(`${router.pathname}/?editproduct=${uid}`)
               }
-              className="text-white bg-sky-500 p-1 shadow-lg px-3 rounded-md hover:bg-sky-400 absolute top-1 left-20"
+              className="text-white bg-green-500 p-1 shadow-lg px-3 rounded-md hover:bg-green-400 absolute top-2 left-10"
             >
-              Edit
+              <AiFillEdit className="h-5 w-5" />
             </button>
           </>
         )}
