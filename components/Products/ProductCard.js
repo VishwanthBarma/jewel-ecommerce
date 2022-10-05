@@ -1,10 +1,21 @@
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import ReactModal from "react-modal";
+import EditModal from "../Modal/EditModal";
 
-function ProductCard({ uid, title, description, image, showNotification }) {
+function ProductCard({
+  uid,
+  title,
+  description,
+  image,
+  showSuccessNotification,
+  showRemovedNotification,
+}) {
   const { data: session } = useSession();
   const [removed, setRemoved] = useState(false);
+  const router = useRouter();
 
   const handleRemove = async (e) => {
     e.preventDefault();
@@ -21,7 +32,7 @@ function ProductCard({ uid, title, description, image, showNotification }) {
 
     setRemoved(true);
 
-    showNotification();
+    showRemovedNotification();
   };
 
   return (
@@ -46,7 +57,12 @@ function ProductCard({ uid, title, description, image, showNotification }) {
             >
               Remove
             </button>
-            <button className="text-white bg-sky-500 p-1 shadow-lg px-3 rounded-md hover:bg-sky-400 absolute top-1 left-20">
+            <button
+              onClick={() =>
+                router.push(`${router.pathname}/?editproduct=${uid}`)
+              }
+              className="text-white bg-sky-500 p-1 shadow-lg px-3 rounded-md hover:bg-sky-400 absolute top-1 left-20"
+            >
               Edit
             </button>
           </>
@@ -55,6 +71,33 @@ function ProductCard({ uid, title, description, image, showNotification }) {
       <div className=" px-3 py-2 overflow-y-scroll scrollbar-hide">
         <h1 className="text-lg text-neutral-400">{description}</h1>
       </div>
+      <ReactModal
+        isOpen={Boolean(router.query.editproduct)}
+        onRequestClose={() => router.back()}
+        style={{
+          content: {
+            top: "35%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            padding: 0,
+            border: "none",
+            backgroundColor: "",
+            transform: "translate(-50%, -50%)",
+          },
+          overlay: {
+            backgroundColor: "#334250a7",
+          },
+        }}
+      >
+        <EditModal
+          showSuccessNotification={showSuccessNotification}
+          showRemovedNotification={showRemovedNotification}
+          uid={uid}
+          title={title}
+          description={description}
+        />
+      </ReactModal>
     </div>
   );
 }

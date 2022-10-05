@@ -10,8 +10,12 @@ import db from "../utils/db";
 function Products({ products }) {
   const { data: session } = useSession();
 
-  const showNotification = () => {
+  const showRemovedNotification = () => {
     toast.success("Removed Successfully.");
+  };
+
+  const showSuccessNotification = () => {
+    toast.success("Updated Successfully.");
   };
 
   return (
@@ -37,7 +41,8 @@ function Products({ products }) {
             image={product.image}
             key={product._id}
             uid={product._id}
-            showNotification={showNotification}
+            showSuccessNotification={showSuccessNotification}
+            showRemovedNotification={showRemovedNotification}
           />
         ))}
       </div>

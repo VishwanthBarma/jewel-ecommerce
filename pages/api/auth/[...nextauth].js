@@ -6,7 +6,11 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "Username" },
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "Enter Username",
+        },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
@@ -21,8 +25,8 @@ export const authOptions = {
       },
     }),
   ],
-
   session: {
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
 };
