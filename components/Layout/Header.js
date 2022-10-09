@@ -22,7 +22,7 @@ function Header() {
           <IoPersonCircleOutline className="h-7 w-7 text-slate-600" />
         </button>
       )}
-      <h1 className="font-bold text-2xl">Shop Name</h1>
+      <h1 className="font-bold text-2xl">Sri Laxmi Narayana Jewellers</h1>
     </div>
   );
 }
